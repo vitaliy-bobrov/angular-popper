@@ -2,7 +2,9 @@ export default {
   format: 'umd',
   moduleName: 'angular-icon',
   external: [
-    '@angular/core'
+    '@angular/core',
+    '@angular/common',
+    'popper.js'
   ],
   onwarn: ( warning ) => {
       const skip_codes = [

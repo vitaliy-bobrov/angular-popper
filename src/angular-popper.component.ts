@@ -8,9 +8,12 @@ import {
   ElementRef,
   ViewEncapsulation,
   ChangeDetectionStrategy } from '@angular/core';
-
 import * as Popper from 'popper.js';
-import { PopperPlacement } from './angular-popper.module';
+
+export type PopperPlacement = 'top' | 'top-start' | 'top-end' |
+  'right' | 'right-start' | 'right-end' |
+  'bottom' | 'bottom-start' | 'bottom-end' |
+  'left' | 'left-start' | 'left-end';
 
 @Component({
   selector: 'angular-popper',
