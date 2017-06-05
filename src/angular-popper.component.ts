@@ -8,7 +8,8 @@ import {
   ElementRef,
   ViewEncapsulation,
   ChangeDetectionStrategy } from '@angular/core';
-import * as Popper from 'popper.js';
+const Popper = require('popper.js');
+
 
 export type PopperPlacement = 'top' | 'top-start' | 'top-end' |
   'right' | 'right-start' | 'right-end' |
@@ -49,7 +50,7 @@ export class PopperComponent implements OnInit, OnDestroy {
   containerId: string;
   closeId: string;
 
-  private popper: Popper;
+  private popper;
 
   constructor(private el: ElementRef) {}
 
