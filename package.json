@@ -1,6 +1,6 @@
 {
   "name": "angular-popper",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.2",
   "description": "Popover component for Angular 2+ based on Popper.js library.",
   "main": "dist/angular-popper.bundle.js",
   "module": "dist/angular-popper.module.js",
