@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { PopperComponent } from './angular-popper.component';
 
 export * from './angular-popper.component';
+export * from './angular-popper.interface';
 
 @NgModule({
   imports: [

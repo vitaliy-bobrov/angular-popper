@@ -4,48 +4,25 @@ import {
   Output,
   EventEmitter,
   OnInit,
+  AfterViewInit,
   OnDestroy,
   ElementRef,
   ViewEncapsulation,
   ChangeDetectionStrategy } from '@angular/core';
-const Popper = require('popper.js');
-
-
-export type PopperPlacement = 'top' | 'top-start' | 'top-end' |
-  'right' | 'right-start' | 'right-end' |
-  'bottom' | 'bottom-start' | 'bottom-end' |
-  'left' | 'left-start' | 'left-end';
+import Popper from 'popper.js';
+import { PopperPlacement } from './angular-popper.interface';
 
 @Component({
   selector: 'angular-popper',
-  template:
-    `<ng-content></ng-content>
-
-    <div class="angular-popper"
-         *ngIf="showPopper"
-         [ngClass]="placement"
-         [attr.id]="containerId">
-      <button type="button"
-              class="js-popper-close angular-popper__close"
-              *ngIf="closeButton"
-              (click)="onClose()"
-              [attr.id]="closeId">
-        <ng-content selector=".close-button, [close-button]"></ng-content>
-      </button>
-
-      <ng-content selector=".content, [content]"></ng-content>
-
-      <div class="angular-popper__arrow" x-arrow></div>
-  </div>`,
+  templateUrl: 'angular-popper.component.html',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PopperComponent implements OnInit, OnDestroy {
-  @Input() showPopper = false;
+export class PopperComponent implements OnInit, AfterViewInit, OnDestroy {
+  @Input() show = false;
   @Input() placement: PopperPlacement = 'bottom';
-  @Input() gpuAcceleration = true;
 
-  @Output() closed = new EventEmitter();
+  @Output() close = new EventEmitter();
 
   containerId: string;
   closeId: string;
@@ -55,34 +32,39 @@ export class PopperComponent implements OnInit, OnDestroy {
   constructor(private el: ElementRef) {}
 
   ngOnInit() {
-    this.initPopper();
+    this.init();
+  }
+
+  ngAfterViewInit() {
+    this.create();
   }
 
   ngOnDestroy() {
-    this.destroyPopper();
+    this.destroy();
   }
 
   onClose() {
-    this.showPopper = false;
-    this.closed.emit();
+    this.show = false;
+    this.close.emit();
   }
 
-  initPopper() {
+  init() {
     const popperId = this.uuid4();
     this.containerId = `angular-popper-${popperId}`;
     this.closeId = `angular-popper-${popperId}__close`;
+  }
 
+  create() {
     this.popper = new Popper(
       this.el.nativeElement,
       this.el.nativeElement.querySelector('.angular-popper'),
       {
         placement: this.placement,
-        gpuAcceleration: this.gpuAcceleration,
         removeOnDestroy: true
       });
   }
 
-  destroyPopper() {
+  destroy() {
     if (this.popper) {
       this.popper.destroy();
       this.popper = null;
