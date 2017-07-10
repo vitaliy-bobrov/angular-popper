@@ -6,8 +6,9 @@ import {
   OnInit,
   AfterViewInit,
   OnDestroy,
+  OnChanges,
   ElementRef,
-  ViewEncapsulation,
+  SimpleChanges,
   ChangeDetectionStrategy } from '@angular/core';
 import Popper from 'popper.js';
 import { PopperPlacement } from './angular-popper.interface';
@@ -15,12 +16,12 @@ import { PopperPlacement } from './angular-popper.interface';
 @Component({
   selector: 'angular-popper',
   templateUrl: 'angular-popper.component.html',
-  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PopperComponent implements OnInit, AfterViewInit, OnDestroy {
+export class PopperComponent implements OnInit, AfterViewInit, OnChanges,OnDestroy {
   @Input() show = false;
   @Input() placement: PopperPlacement = 'bottom';
+  @Input() target: string | Element;
 
   @Output() close = new EventEmitter();
 
@@ -37,6 +38,14 @@ export class PopperComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     this.create();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.target && !changes.target.firstChange ||
+      changes.placement && !changes.placement.firstChange) {
+      this.destroy();
+      this.create();
+    }
   }
 
   ngOnDestroy() {
@@ -56,11 +65,10 @@ export class PopperComponent implements OnInit, AfterViewInit, OnDestroy {
 
   create() {
     this.popper = new Popper(
-      this.el.nativeElement,
+      this.getTargetNode(),
       this.el.nativeElement.querySelector('.angular-popper'),
       {
-        placement: this.placement,
-        removeOnDestroy: true
+        placement: this.placement
       });
   }
 
@@ -68,6 +76,18 @@ export class PopperComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.popper) {
       this.popper.destroy();
       this.popper = null;
+    }
+  }
+
+  private getTargetNode(): Element {
+    if (this.target) {
+      if (typeof this.target === 'string') {
+        return document.querySelector(this.target);
+      } else {
+        return this.target;
+      }
+    } else {
+      return this.el.nativeElement;
     }
   }
 
