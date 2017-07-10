@@ -1,92 +1,79 @@
-$popper-background-color: gold !default;
-$popper-z-index:          1100 !default;
-
-.angular-popper {
-  background: $popper-background-color;
-  color: #000;
-  width: 320px;
+:host .angular-popper {
+  position: absolute;
+  background: #FFC107;
+  color: black;
+  width: 150px;
+  border-radius: 3px;
+  box-shadow: 0 0 2px rgba(0,0,0,0.5);
   padding: 10px;
-  z-index: $popper-z-index;
+  text-align: center;
+}
 
-  &__close {
-    position: absolute;
-    top: 2px;
-    right: 4px;
-    color: #000;
-    background: transparent;
-    border: 0;
+:host .angular-popper .angular-popper__arrow {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: #FFC107;
+  position: absolute;
+  margin: 5px;
+}
 
-    &:active,
-    &:focus {
-      outline: 0;
-    }
-  }
+:host .angular-popper[x-placement^="top"] {
+  margin-bottom: 5px;
+}
 
-  &__arrow {
-    width: 0;
-    height: 0;
-    border-style: solid;
-    position: absolute;
-    margin: 5px;
-  }
+:host .angular-popper[x-placement^="top"] .angular-popper__arrow {
+  border-width: 5px 5px 0 5px;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  bottom: -5px;
+  left: calc(50% - 5px);
+  margin-top: 0;
+  margin-bottom: 0;
+}
 
-  &.top,
-  &.top-start,
-  &.top-end {
-    margin-bottom: 5px;
+:host .angular-popper[x-placement^="bottom"] {
+  margin-top: 5px;
+}
 
-    .angular-popper__arrow {
-      border-width: 5px 5px 0;
-      border-color: $popper-background-color transparent transparent transparent;
-      bottom: -5px;
-      left: calc(50% - 5px);
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-  }
+:host .angular-popper[x-placement^="bottom"] .angular-popper__arrow {
+  border-width: 0 5px 5px 5px;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  top: -5px;
+  left: calc(50% - 5px);
+  margin-top: 0;
+  margin-bottom: 0;
+}
 
-  &.bottom,
-  &.bottom-start,
-  &.bottom-end {
-    margin-top: 5px;
+:host .angular-popper[x-placement^="right"] {
+  margin-left: 5px;
+}
 
-    .angular-popper__arrow {
-      border-width: 0 5px 5px;
-      border-color: transparent transparent $popper-background-color transparent;
-      top: -5px;
-      left: calc(50% - 5px);
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-  }
+:host .angular-popper[x-placement^="right"] .angular-popper__arrow {
+  border-width: 5px 5px 5px 0;
+  border-left-color: transparent;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  left: -5px;
+  top: calc(50% - 5px);
+  margin-left: 0;
+  margin-right: 0;
+}
 
-  &.right,
-  &.right-start,
-  &.right-end {
-    margin-left: 5px;
+:host .angular-popper[x-placement^="left"] {
+  margin-right: 5px;
+}
 
-    .angular-popper__arrow {
-      border-width: 5px 5px 5px 0;
-      border-color: transparent $popper-background-color transparent transparent;
-      left: -5px;
-      top: calc(50% - 5px);
-      margin-left: 0;
-      margin-right: 0;
-    }
-  }
-
-  &.left,
-  &.left-start,
-  &.left-end {
-    margin-right: 5px;
-
-    .angular-popper__arrow {
-      border-width: 5px 0 5px 5px;
-      border-color: transparent transparent transparent $popper-background-color;
-      right: -5px;
-      top: calc(50% - 5px);
-      margin-left: 0;
-      margin-right: 0;
-    }
-  }
+:host .angular-popper[x-placement^="left"] .angular-popper__arrow {
+  border-width: 5px 0 5px 5px;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  right: -5px;
+  top: calc(50% - 5px);
+  margin-left: 0;
+  margin-right: 0;
 }
