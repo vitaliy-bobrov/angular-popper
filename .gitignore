@@ -41,5 +41,4 @@ dist
 .vscode
 
 demo/dist
-demo/vendor
 dist

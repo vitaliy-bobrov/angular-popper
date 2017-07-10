@@ -3,13 +3,13 @@ import {
   Input,
   Output,
   EventEmitter,
-  OnInit,
   AfterViewInit,
   OnDestroy,
   OnChanges,
   ElementRef,
   SimpleChanges,
-  ChangeDetectionStrategy } from '@angular/core';
+  ChangeDetectionStrategy,
+  NgZone } from '@angular/core';
 import Popper from 'popper.js';
 import { PopperPlacement } from './angular-popper.interface';
 
@@ -18,23 +18,17 @@ import { PopperPlacement } from './angular-popper.interface';
   templateUrl: 'angular-popper.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PopperComponent implements OnInit, AfterViewInit, OnChanges,OnDestroy {
+export class PopperComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() show = false;
+  @Input() closeButton = true;
   @Input() placement: PopperPlacement = 'bottom';
   @Input() target: string | Element;
 
   @Output() close = new EventEmitter();
 
-  containerId: string;
-  closeId: string;
+  private popper: Popper;
 
-  private popper;
-
-  constructor(private el: ElementRef) {}
-
-  ngOnInit() {
-    this.init();
-  }
+  constructor(private el: ElementRef, private zone: NgZone) {}
 
   ngAfterViewInit() {
     this.create();
@@ -57,19 +51,15 @@ export class PopperComponent implements OnInit, AfterViewInit, OnChanges,OnDestr
     this.close.emit();
   }
 
-  init() {
-    const popperId = this.uuid4();
-    this.containerId = `angular-popper-${popperId}`;
-    this.closeId = `angular-popper-${popperId}__close`;
-  }
-
   create() {
-    this.popper = new Popper(
-      this.getTargetNode(),
-      this.el.nativeElement.querySelector('.angular-popper'),
-      {
-        placement: this.placement
-      });
+    this.zone.runOutsideAngular(() => {
+      this.popper = new Popper(
+        this.getTargetNode(),
+        this.el.nativeElement.querySelector('.angular-popper'),
+        {
+          placement: this.placement
+        });
+    });
   }
 
   destroy() {
@@ -89,14 +79,5 @@ export class PopperComponent implements OnInit, AfterViewInit, OnChanges,OnDestr
     } else {
       return this.el.nativeElement;
     }
-  }
-
-  private uuid4(): string {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
-      const r = Math.random() * 16 | 0;
-      const v = c === 'x' ? r : (r & 0x3 | 0x8);
-
-      return v.toString(16);
-    });
   }
 }

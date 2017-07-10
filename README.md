@@ -16,11 +16,9 @@ Popover component for Angular 2+ based on [Popper.js](https://popper.js.org/) li
 
 ## Usage
 
-
-
 ## Available properties
 
-### showPopper
+### show
 
 **Type**: boolean
 
@@ -28,14 +26,6 @@ Popover component for Angular 2+ based on [Popper.js](https://popper.js.org/) li
 ### placement
 
 **Type**: String
-
-
-
-### gpuAcceleration
-
-**Type**: boolean
-
-
 
 ## TODO:
 - [ ]
