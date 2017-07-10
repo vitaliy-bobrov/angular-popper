@@ -16,6 +16,7 @@ import { PopperPlacement } from './angular-popper.interface';
 @Component({
   selector: 'angular-popper',
   templateUrl: 'angular-popper.component.html',
+  styleUrls: ['./angular-popper.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PopperComponent implements AfterViewInit, OnChanges, OnDestroy {

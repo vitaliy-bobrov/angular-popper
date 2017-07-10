@@ -1,6 +1,6 @@
 {
   "name": "angular-popper",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0",
   "description": "Popover component for Angular 2+ based on Popper.js library.",
   "main": "dist/angular-popper.bundle.js",
   "module": "dist/angular-popper.module.js",
@@ -11,6 +11,7 @@
     "test:single": "mocha --require ts-node/register test/**/*.spec.ts --recursive",
     "test:watch": "mocha -w --require ts-node/register test/**/*.spec.ts --recursive",
     "build": "rimraf dist && tsc -p tsconfig.esm.json && rollup -c rollup.config.js dist/angular-popper.module.js > dist/angular-popper.bundle.js && ngc",
+    "deploy": "gh-pages -d demo/dist -m \"Demo update\"",
     "lint": "tslint -c tslint.json src/**/*.ts test/**/*.ts"
   },
   "peerDependencies": {
