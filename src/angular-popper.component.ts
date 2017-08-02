@@ -11,7 +11,6 @@ import {
   ChangeDetectionStrategy,
   NgZone } from '@angular/core';
 import Popper from 'popper.js';
-import { PopperPlacement } from './angular-popper.interface';
 
 @Component({
   selector: 'angular-popper',
@@ -22,7 +21,7 @@ import { PopperPlacement } from './angular-popper.interface';
 export class PopperComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() show = false;
   @Input() closeButton = true;
-  @Input() placement: PopperPlacement = 'bottom';
+  @Input() placement: Popper.Placement = 'bottom';
   @Input() target: string | Element;
 
   @Output() close = new EventEmitter();
@@ -65,7 +64,10 @@ export class PopperComponent implements AfterViewInit, OnChanges, OnDestroy {
 
   destroy() {
     if (this.popper) {
-      this.popper.destroy();
+      this.zone.runOutsideAngular(() => {
+        this.popper.destroy();
+      });
+
       this.popper = null;
     }
   }
