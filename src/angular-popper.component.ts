@@ -14,7 +14,7 @@ import Popper from 'popper.js';
 
 @Component({
   selector: 'angular-popper',
-  templateUrl: 'angular-popper.component.html',
+  templateUrl: './angular-popper.component.html',
   styleUrls: ['./angular-popper.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
