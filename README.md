@@ -28,4 +28,6 @@ Popover component for Angular 2+ based on [Popper.js](https://popper.js.org/) li
 **Type**: String
 
 ## TODO:
-- [ ]
+- [ ] Add Storybook
+- [ ] Add more options
+- [ ] Create usage and styling notes
