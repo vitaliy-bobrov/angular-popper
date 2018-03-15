@@ -1,6 +1,8 @@
 export default {
-  format: 'umd',
-  moduleName: 'angular-icon',
+  output: {
+    name: 'angular-icon',
+    format: 'umd'
+  },
   external: [
     '@angular/core',
     '@angular/common',
