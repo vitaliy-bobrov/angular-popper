@@ -10,14 +10,11 @@ Popover component for Angular 2+ based on [Popper.js](https://popper.js.org/) li
 
 ## Instalation
 
-* npm
-`npm install --save popper.js angular-popper`
+* Angular CLI > v6.0.0: `ng add angular-popper`
 
-* yarn
-`yarn add popper.js angular-popper`
+* yarn: `yarn add popper.js angular-popper`
 
-* Angular CLI > v6.0.0 `ng-add`
-`ng add angular-popper`
+* npm: `npm install --save popper.js angular-popper`
 
 ## Usage
 
