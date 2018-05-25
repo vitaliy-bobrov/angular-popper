@@ -8,8 +8,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "lint:lib": "ng lint angular-popper",
-    "test:lib": "ng test angular-popper --single-run",
+    "test:lib": "ng test angular-popper",
     "build:lib": "ng build angular-popper --prod",
+    "copy:readme": "node scripts/copy.js",
+    "publish:lib": "yarn lint:lib && yarn test:lib && yarn build:lib && yarn copy:readme && npm publish dist/angular-popper",
     "build:demo": "ng build --prod --base-href /angular-popper/",
     "deploy:demo": "gh-pages -d dist/ngx-popper"
   },
