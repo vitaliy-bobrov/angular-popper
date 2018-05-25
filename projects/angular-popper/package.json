@@ -5,7 +5,7 @@
   "peerDependencies": {
     "@angular/common": ">=2.0.0",
     "@angular/core": ">=2.0.0",
-    "popper.js": ">=1.0.0"
+    "popper.js": ">=1.14.0"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,9 @@
     "angular 4",
     "popper",
     "popperjs",
-    "popover"
+    "popover",
+    "ngx",
+    "tooltip"
   ],
   "author": "Vitaliy Bobrov <bobrov1989@gmail.com>",
   "license": "MIT",

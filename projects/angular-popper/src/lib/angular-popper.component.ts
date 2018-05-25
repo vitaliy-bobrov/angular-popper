@@ -8,20 +8,26 @@ import {
   OnChanges,
   ElementRef,
   SimpleChanges,
+  ViewEncapsulation,
   ChangeDetectionStrategy,
-  NgZone } from '@angular/core';
+  NgZone
+} from '@angular/core';
 import Popper from 'popper.js';
 
 @Component({
   selector: 'angular-popper',
   templateUrl: './angular-popper.component.html',
   styleUrls: ['./angular-popper.css'],
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PopperComponent implements AfterViewInit, OnChanges, OnDestroy {
-  @Input() show = false;
-  @Input() closeButton = true;
+  @Input() show = true;
+  @Input() closeButton = false;
   @Input() placement: Popper.Placement = 'bottom';
+  @Input() positionFixed = false;
+  @Input() eventsEnabled = true;
+  @Input() modifiers: Popper.Modifiers;
   @Input() target: string | Element;
 
   @Output() close = new EventEmitter();
@@ -35,8 +41,12 @@ export class PopperComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.target && !changes.target.firstChange ||
-      changes.placement && !changes.placement.firstChange) {
+    if (
+      changes.target && !changes.target.firstChange ||
+      changes.placement && !changes.placement.firstChange ||
+      changes.positionFixed && !changes.positionFixed.firstChange ||
+      changes.eventsEnabled && !changes.eventsEnabled.firstChange
+    ) {
       this.destroy();
       this.create();
     }
@@ -53,12 +63,18 @@ export class PopperComponent implements AfterViewInit, OnChanges, OnDestroy {
 
   create() {
     this.zone.runOutsideAngular(() => {
+      const { placement, positionFixed, eventsEnabled, modifiers } = this;
+
       this.popper = new Popper(
         this.getTargetNode(),
         this.el.nativeElement.querySelector('.angular-popper'),
         {
-          placement: this.placement
-        });
+          placement,
+          positionFixed,
+          eventsEnabled,
+          modifiers
+        }
+      );
     });
   }
 

@@ -1,4 +1,4 @@
-:host .angular-popper {
+.angular-popper {
   position: absolute;
   background: #FFC107;
   color: black;
@@ -9,7 +9,11 @@
   text-align: center;
 }
 
-:host .angular-popper .angular-popper__arrow {
+.angular-popper:not(.visible) {
+  display: none;
+}
+
+.angular-popper .angular-popper__arrow {
   width: 0;
   height: 0;
   border-style: solid;
@@ -18,11 +22,11 @@
   margin: 5px;
 }
 
-:host .angular-popper[x-placement^="top"] {
+.angular-popper[x-placement^="top"] {
   margin-bottom: 5px;
 }
 
-:host .angular-popper[x-placement^="top"] .angular-popper__arrow {
+.angular-popper[x-placement^="top"] .angular-popper__arrow {
   border-width: 5px 5px 0 5px;
   border-left-color: transparent;
   border-right-color: transparent;
@@ -33,11 +37,11 @@
   margin-bottom: 0;
 }
 
-:host .angular-popper[x-placement^="bottom"] {
+.angular-popper[x-placement^="bottom"] {
   margin-top: 5px;
 }
 
-:host .angular-popper[x-placement^="bottom"] .angular-popper__arrow {
+.angular-popper[x-placement^="bottom"] .angular-popper__arrow {
   border-width: 0 5px 5px 5px;
   border-left-color: transparent;
   border-right-color: transparent;
@@ -48,11 +52,11 @@
   margin-bottom: 0;
 }
 
-:host .angular-popper[x-placement^="right"] {
+.angular-popper[x-placement^="right"] {
   margin-left: 5px;
 }
 
-:host .angular-popper[x-placement^="right"] .angular-popper__arrow {
+.angular-popper[x-placement^="right"] .angular-popper__arrow {
   border-width: 5px 5px 5px 0;
   border-left-color: transparent;
   border-top-color: transparent;
@@ -63,11 +67,11 @@
   margin-right: 0;
 }
 
-:host .angular-popper[x-placement^="left"] {
+.angular-popper[x-placement^="left"] {
   margin-right: 5px;
 }
 
-:host .angular-popper[x-placement^="left"] .angular-popper__arrow {
+.angular-popper[x-placement^="left"] .angular-popper__arrow {
   border-width: 5px 0 5px 5px;
   border-top-color: transparent;
   border-right-color: transparent;
