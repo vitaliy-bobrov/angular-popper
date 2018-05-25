@@ -14,7 +14,7 @@
     "test:lib": "ng test angular-popper",
     "build:lib": "ng build angular-popper --prod",
     "copy:readme": "node scripts/copy-readme.js",
-    "copy:schematics": "copyfiles \"./schematics/src/**/*.{js,json}\" dist/angular-popper/schematics",
+    "copy:schematics": "copyfiles -u 2 \"./schematics/src/**/*.{js,json}\" dist/angular-popper/schematics",
     "publish:lib": "yarn lint:lib && yarn test:lib && yarn build:lib && yarn build:schematics && yarn copy:schematics && yarn copy:readme && npm publish dist/angular-popper",
     "build:demo": "ng build --prod --base-href /angular-popper/",
     "deploy:demo": "gh-pages -d dist/ngx-popper"
