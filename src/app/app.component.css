@@ -1,0 +1,19 @@
+.demo-case__live {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.target-block {
+  width: 240px;
+  text-align: center;
+}
+
+.target-block.interactive {
+  cursor: pointer;
+}
+
+.target-block select {
+  margin: auto;
+}
