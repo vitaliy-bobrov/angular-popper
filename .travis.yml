@@ -16,3 +16,4 @@ before_script:
 script:
   - yarn lint:lib
   - yarn build:lib
+  - yarn build:schematics

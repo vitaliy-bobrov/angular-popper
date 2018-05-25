@@ -5,6 +5,8 @@
   "peerDependencies": {
     "@angular/common": ">=2.0.0",
     "@angular/core": ">=2.0.0",
+    "@angular-devkit/core": "^0.6.5",
+    "@angular-devkit/schematics": "^0.6.5",
     "popper.js": ">=1.14.0"
   },
   "repository": {
@@ -19,12 +21,15 @@
     "popperjs",
     "popover",
     "ngx",
-    "tooltip"
+    "tooltip",
+    "schematics",
+    "ng-add"
   ],
   "author": "Vitaliy Bobrov <bobrov1989@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/vitaliy-bobrov/angular-popper/issues"
   },
-  "homepage": "https://github.com/vitaliy-bobrov/angular-popper#readme"
+  "homepage": "https://github.com/vitaliy-bobrov/angular-popper#readme",
+  "schematics": "./schematics/collection.json"
 }

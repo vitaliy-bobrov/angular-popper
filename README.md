@@ -16,16 +16,81 @@ Popover component for Angular 2+ based on [Popper.js](https://popper.js.org/) li
 * yarn
 `yarn add popper.js angular-popper`
 
+* Angular CLI > v6.0.0 `ng-add`
+`ng add angular-popper`
+
 ## Usage
 
-## Available input properties
+### Import NgxPopper module
+```ts
+...
+import { NgxPopper } from 'angular-popper';
 
-### show
+@NgModule({
+  ...
+  imports: [
+    NgxPopper
+  ]
+  ..
+})
+export class AppModule {}
+```
 
-**Type**: boolean
+### Use in template
 
+```html
+<angular-popper>
+  <div class="target-block border border-primary">
+    Target
+  </div>
 
-### placement
+  <div content>Popper content</div>
+</angular-popper>
+```
 
-**Type**: String
+## Input properties
+
+### show: boolean
+
+**Default**: `true`
+
+Specify if popper visible.
+
+### target?: string | Element
+
+Specify popper element target, accepts HTMLElement reference or CSS selector.
+
+### closeButton: boolean
+
+**Default**: `false`
+
+Specify if popper should contain close button.
+
+### placement: Popper.Placement
+
+**Default**: `'bottom'`
+
+Specify popper placement.
+
+### positionFixed: boolean
+
+**Default**: `false`
+
+Specify if popper should has `fixed` position.
+
+### eventsEnabled: boolean
+
+**Default**: `true`
+
+Specify if popper should listen for scroll & resize events.
+
+### modifiers?: Popper.Modifiers
+
+Popper.js modifiers object, [details](https://popper.js.org/popper-documentation.html#modifiers).
+
+## Events
+
+### close
+
+Fires on popper close button click.
 

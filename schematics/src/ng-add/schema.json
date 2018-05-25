@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "SchematicsNgxPopperNgAdd",
+  "title": "Angular Popper ng-add Options Schema",
+  "type": "object",
+  "properties": {
+    "skipPackageJson": {
+      "type": "boolean",
+      "default": false,
+      "description":
+        "Do not add angular-popper as dependency to package.json (e.g., --skipPackageJson)."
+    }
+  },
+  "required": []
+}
