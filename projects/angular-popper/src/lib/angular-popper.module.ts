@@ -16,4 +16,4 @@ export * from './angular-popper.component';
     PopperComponent
   ]
 })
-export class NgPopper {}
+export class NgxPopper {}

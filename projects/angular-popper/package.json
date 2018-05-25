@@ -1,0 +1,28 @@
+{
+  "name": "angular-popper",
+  "version": "1.0.0",
+  "description": "Popover component for Angular 2+ based on Popper.js library.",
+  "peerDependencies": {
+    "@angular/common": ">=2.0.0",
+    "@angular/core": ">=2.0.0",
+    "popper.js": ">=1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vitaliy-bobrov/angular-popper.git"
+  },
+  "keywords": [
+    "angular",
+    "angular 2",
+    "angular 4",
+    "popper",
+    "popperjs",
+    "popover"
+  ],
+  "author": "Vitaliy Bobrov <bobrov1989@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vitaliy-bobrov/angular-popper/issues"
+  },
+  "homepage": "https://github.com/vitaliy-bobrov/angular-popper#readme"
+}

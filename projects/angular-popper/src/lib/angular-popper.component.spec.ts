@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PopperComponent } from '../src/angular-popper.component';
+import { PopperComponent } from './angular-popper.component';
 
 describe('PopperComponent', () => {
   let component: PopperComponent;
