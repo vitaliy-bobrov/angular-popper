@@ -30,7 +30,7 @@ export class PopperComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() modifiers: Popper.Modifiers;
   @Input() target: string | Element;
 
-  @Output() close = new EventEmitter();
+  @Output() close = new EventEmitter<void>();
 
   private popper: Popper;
 
