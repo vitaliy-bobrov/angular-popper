@@ -1,12 +1,12 @@
 {
   "name": "angular-popper",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Popover component for Angular 2+ based on Popper.js library.",
   "peerDependencies": {
     "@angular/common": ">=2.0.0",
     "@angular/core": ">=2.0.0",
-    "@angular-devkit/core": "^0.6.5",
-    "@angular-devkit/schematics": "^0.6.5",
+    "@angular-devkit/core": ">=0.6.5",
+    "@angular-devkit/schematics": ">=0.6.5",
     "popper.js": ">=1.14.0"
   },
   "repository": {
