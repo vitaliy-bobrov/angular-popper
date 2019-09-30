@@ -8,7 +8,7 @@ Popover component for Angular 2+ based on [Popper.js](https://popper.js.org/) li
 
 [Demo](https://vitaliy-bobrov.github.io/angular-popper/)
 
-## Instalation
+## Installation
 
 * Angular CLI > v6.0.0: `ng add angular-popper`
 
